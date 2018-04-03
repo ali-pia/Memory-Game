@@ -29,22 +29,30 @@ let matchedCard = document.getElementsByClassName("match");
  // opened cards' array
 var openedCards = [];
 
+
 // shuffles cards' description 
 // array's param
 // returns shuffledarray
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+const shuffle = array => {
+    let currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
+
+    while (0 !== currentIndex) {
+
+      // Choose an element randomly
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // Switch current element and random element
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
     }
 
     return array;
-};
+  };
 
 
 // shuffles cards on refreshed  page
@@ -66,6 +74,8 @@ function startGame(){
     // moves' reset
     moves = 0;
     counter.innerHTML = moves;
+    openedCards = [];
+
     // rating's reset 
     for (var i= 0; i < stars.length; i++){
         stars[i].style.color = "#FFD700";
